@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <fieldset style="width: 400px">
+        <legend>Dictionary</legend>
+        <input type="text"width="300px" id="search" placeholder="insert information">
+        <select id="translate" name="ranslate">
+            <option value="ENG">ENG --> VI</option>
+            <option value="VI">VI --> ENG</option>
+        </select>
+        <input type="button" id="find" value="Search" onclick="findWord()">
+        <br><br><hr width="400px">
+        <p>Result :<span id="result"></span> </p>
+    </fieldset>
+</form>
+<script>
+    function findWord() {
+        let engLish = ['Hello','Goodbye','Thank You','Blue','Red','Sky'];
+        let vietNamese = ['Xin Chào','Tạm Biệt','Cảm Ơn','Xanh Dương','Đỏ','Bầu Trời'];
+        let inWord = document.getElementById('search').value;
+        let inLang = document.getElementById('translate').value;
+        let result = '';
+        if (inLang === 'ENG') {
+            for (let i = 0; i < engLish.length; i++) {
+                if (inWord === engLish[i]) {
+                    result = vietNamese[i];
+                    break;
+
+                } else if (i === engLish.length - 1) {
+                    result = "Not Found"
+                }
+            }
+        } else if (inLang === 'VI') {
+            for (let i = 0; i < vietNamese.length; i++) {
+                if (inWord === vietNamese[i]) {
+                    result = engLish[i];
+                    break;
+                } else if (i === vietNamese.length -1) {
+                    result = "Not Found";
+                }
+            }
+        } document.getElementById('result').innerHTML = ' ' + result;
+    }
+</script>
+</body>
+</html>
